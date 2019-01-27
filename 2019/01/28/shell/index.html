@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="qHmPkvPC9k6qmG74464HTdMeqvKorRahYwVLbmNVdtc">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="shell,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="input and output,user input if exit statues functions wildcards for loops case statements logging debugging tips bash shell options more    download \shell-script-course/debugging/lessons \shell-scri">
+<meta name="keywords" content="shell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell">
+<meta property="og:url" content="https://xiaoqiu.github.io/2019/01/28/shell/index.html">
+<meta property="og:site_name" content="Kate Blog">
+<meta property="og:description" content="input and output,user input if exit statues functions wildcards for loops case statements logging debugging tips bash shell options more    download \shell-script-course/debugging/lessons \shell-scri">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-27T18:14:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell">
+<meta name="twitter:description" content="input and output,user input if exit statues functions wildcards for loops case statements logging debugging tips bash shell options more    download \shell-script-course/debugging/lessons \shell-scri">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'WHURAZXQLW',
+      apiKey: '464af143aa86152b3fa61e18403f9107',
+      indexName: 'xiaoqiu.github.io',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xiaoqiu.github.io/2019/01/28/shell/">
+
+
+
+
+
+  <title>shell | Kate Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-133352521-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kate Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaoqiu.github.io/2019/01/28/shell/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xiaoqiu Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kate Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">shell</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-28T02:14:38+08:00">
+                2019-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/shell/" itemprop="url" rel="index">
+                    <span itemprop="name">shell</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>input and output,user input</li>
+<li>if</li>
+<li>exit statues</li>
+<li>functions</li>
+<li>wildcards</li>
+<li>for loops</li>
+<li>case statements</li>
+<li>logging</li>
+<li>debugging tips</li>
+<li>bash shell options</li>
+<li>more</li>
+</ul>
+<hr>
+<ul>
+<li><p>download \<br>shell-script-course/debugging/lessons \<br>shell-script-course/debugging/practice-exercies</p>
+</li>
+<li><p>learn \<br>1 use variable \<br>2 perform tests and make decisions \<br>3 accept command line arguments \<br>4 accept input from a user </p>
+</li>
+</ul>
+<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"scripting is fun!"</span> </span><br><span class="line">--------------------------    </span><br><span class="line">chmod 755 script.sh </span><br><span class="line">./script.sh</span><br></pre></td></tr></table></figure>
+<h1 id="not-just-shell-script"><a href="#not-just-shell-script" class="headerlink" title="not just shell script"></a>not just shell script</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python </span></span><br><span class="line"><span class="built_in">print</span> <span class="string">"this is a python script"</span> </span><br><span class="line">------------------------------</span><br><span class="line">chmod 755 hi.py </span><br><span class="line">./hi.py</span><br></pre></td></tr></table></figure>
+<h1 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h1><ul>
+<li>storage locations that have a name </li>
+<li>name-value pairs </li>
+<li>uppercase,case sensitive </li>
+<li>VARIABLE_NAME=”Value”</li>
+</ul>
+<h4 id="Variable-Usage"><a href="#Variable-Usage" class="headerlink" title="Variable Usage"></a>Variable Usage</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line">MY_SHELL=<span class="string">"bash"</span> </span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I like the <span class="variable">$MY_SHELL</span> shell."</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash </span></span><br><span class="line">MY_SHELL=<span class="string">"bash"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I like the <span class="variable">$&#123;MY_SHELL&#125;</span> shell."</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">MY_SHELL=<span class="string">"bash"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I am <span class="variable">$&#123;MY_SHELL&#125;</span>ing on my keyboard."</span></span><br><span class="line"></span><br><span class="line">OUTPUT:</span><br><span class="line">I am bashing on my keyboard.</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">MY_SHELL=<span class="string">"bash"</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"I am <span class="variable">$MY_SHELLing</span> on my keyboard."</span></span><br><span class="line"></span><br><span class="line">OUTPUT:</span><br><span class="line">I am  on my keyboard.</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">SERVER_NAME=$(hostname)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"you are running this script on <span class="variable">$&#123;SERVER_NAME&#125;</span>."</span></span><br><span class="line"></span><br><span class="line">OUTPUT:</span><br><span class="line">you are running this script on linuxsvr.</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">SERVER_NAME=`hostname`</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"you are running this script on <span class="variable">$&#123;SERVER_NAME&#125;</span>."</span></span><br><span class="line"></span><br><span class="line">OUTPUT:</span><br><span class="line">you are running this script on linuxsvr.</span><br></pre></td></tr></table></figure>
+<h4 id="Variable-Names（等号前后不能有空格）"><a href="#Variable-Names（等号前后不能有空格）" class="headerlink" title="Variable Names（等号前后不能有空格）"></a>Variable Names（等号前后不能有空格）</h4><ul>
+<li><p>valid:</p>
+<ul>
+<li>FIRST3LETTERS=”ABC”</li>
+<li>FIRST_THREE_LETTERS=”ABC”</li>
+<li>firstThreeLetters=”ABC”</li>
+</ul>
+</li>
+<li><p>Invalid:</p>
+<ul>
+<li>3LETTERS=”ABC”</li>
+<li>first-three-letters=”ABC”</li>
+<li>first@Three@Letters=”ABC”</li>
+</ul>
+</li>
+</ul>
+<h1 id="Tests：success-0-failed-1"><a href="#Tests：success-0-failed-1" class="headerlink" title="Tests：success:0 failed:1"></a>Tests：success:0 failed:1</h1><ul>
+<li>Syntax:<ul>
+<li>[ condition-to-test-for ]</li>
+</ul>
+</li>
+<li>Example:<ul>
+<li>[ -e /etc/passwd ]</li>
+</ul>
+</li>
+</ul>
+<h1 id="File-operators-tests"><a href="#File-operators-tests" class="headerlink" title="File operators(tests)"></a>File operators(tests)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-d FILE     ture <span class="keyword">if</span> file is directory.</span><br><span class="line">-e FILE     <span class="literal">true</span> <span class="keyword">if</span> file exists.   </span><br><span class="line">-f FILE     <span class="literal">true</span> <span class="keyword">if</span> file exists and is a regular file</span><br><span class="line">-r FILE     <span class="literal">true</span> <span class="keyword">if</span> file is readable by you</span><br><span class="line">-s FILE     <span class="literal">true</span> <span class="keyword">if</span> file exists and is not empty.</span><br><span class="line">-w FILE     <span class="literal">true</span> <span class="keyword">if</span> file is writable to you.</span><br><span class="line">-x FILE     <span class="literal">true</span> is file is executable by you.</span><br></pre></td></tr></table></figure>
+<h1 id="String-operators-tests"><a href="#String-operators-tests" class="headerlink" title="String operators(tests)"></a>String operators(tests)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-z STRING   <span class="literal">true</span> <span class="keyword">if</span> string is empty.</span><br><span class="line">-n STRING   <span class="literal">true</span> <span class="keyword">if</span> string is not empty.</span><br><span class="line">STRING1=STRING2     <span class="literal">true</span> is the strings are equal.</span><br><span class="line">STRING1!=STRING2    <span class="literal">true</span> is the strings are not equal.</span><br></pre></td></tr></table></figure>
+<h1 id="Arithmetic-operators-tests"><a href="#Arithmetic-operators-tests" class="headerlink" title="Arithmetic operators(tests)"></a>Arithmetic operators(tests)</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">arg1 -eq arg2</span><br><span class="line">arg1 -ne arg2</span><br><span class="line"></span><br><span class="line">arg1 -lt arg2</span><br><span class="line">arg1 -le arg2</span><br><span class="line"></span><br><span class="line">arg1 -gt arg2</span><br><span class="line">arg1 -ge arg2</span><br></pre></td></tr></table></figure>
+<h1 id="Making-Decisions-The-if-statement"><a href="#Making-Decisions-The-if-statement" class="headerlink" title="Making Decisions - The if statement"></a>Making Decisions - The if statement</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ condiction-is-true ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">command</span> 1</span><br><span class="line">    <span class="built_in">command</span> 2</span><br><span class="line">    <span class="built_in">command</span> N</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">MY_SHELL=<span class="string">"bash"</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$MY_SHELL</span>"</span> = <span class="string">"bash"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"you seen to like the bash shell."</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">OUTPUT:</span><br><span class="line">you seen to like the bash shell.</span><br></pre></td></tr></table></figure>
+<h1 id="if-else"><a href="#if-else" class="headerlink" title="if/else"></a>if/else</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ condition-is-true ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">command</span> N</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">command</span> N</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">MY_SHELL=<span class="string">"csh"</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$MY_SHELL</span>"</span> = <span class="string">"bash"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"you seem to like bash shell."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"you don't seem to like bash shell."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h1 id="if-elif-else"><a href="#if-elif-else" class="headerlink" title="if/elif/else"></a>if/elif/else</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ condiction-is-true ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">command</span> N</span><br><span class="line"><span class="keyword">elif</span> [ condition-is-true ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">command</span> N</span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    <span class="built_in">command</span> N</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">MY_SHELL=<span class="string">"csh"</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$MY_SHELL</span>"</span> = <span class="string">"bash"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"you seem to like bash shell."</span></span><br><span class="line"><span class="keyword">elif</span> [ <span class="string">"<span class="variable">$MY_SHELL</span>"</span> = <span class="string">"csh"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"you don't seem to like csh shell."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"you don't seem to like csh or bash shells."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h1 id="For-loop"><a href="#For-loop" class="headerlink" title="For loop"></a>For loop</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> VARIABLE_NAME <span class="keyword">in</span> ITEM1 ITEM_N</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">command</span> 1</span><br><span class="line">    <span class="built_in">command</span> 2</span><br><span class="line">    <span class="built_in">command</span> N</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">#!/bin/bash</span></span><br><span class="line"> <span class="keyword">for</span> COLOR <span class="keyword">in</span> red green blue</span><br><span class="line"> <span class="keyword">do</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">"COLOR: <span class="variable">$COLOR</span>"</span></span><br><span class="line"> <span class="keyword">done</span></span><br><span class="line">OUTPUT:</span><br><span class="line">COLOR: red</span><br><span class="line">COLOR: green</span><br><span class="line">COLOR: blue</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">#!/bin/bash</span></span><br><span class="line"> COLORS=<span class="string">"red green blue"</span></span><br><span class="line"> </span><br><span class="line"> <span class="keyword">for</span> COLOR <span class="keyword">in</span> <span class="variable">$COLORS</span></span><br><span class="line"> <span class="keyword">do</span></span><br><span class="line">     <span class="built_in">echo</span> <span class="string">"COLOR: <span class="variable">$COLOR</span>"</span></span><br><span class="line"> <span class="keyword">done</span></span><br><span class="line">OUTPUT:</span><br><span class="line">COLOR: red</span><br><span class="line">COLOR: green</span><br><span class="line">COLOR: blue</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">PICTURES=$(ls *jpg)</span><br><span class="line">DATE=$(date +%F)</span><br><span class="line"><span class="keyword">for</span> PICTURE <span class="keyword">in</span> <span class="variable">$PICTURES</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Renaming <span class="variable">$&#123;PICTURE&#125;</span> to <span class="variable">$&#123;DATE&#125;</span>-<span class="variable">$&#123;PICTURE&#125;</span>"</span></span><br><span class="line">    mv <span class="variable">$&#123;PICTURE&#125;</span> <span class="variable">$&#123;DATE&#125;</span>-<span class="variable">$&#123;PICTURE&#125;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">OUTPUT:</span><br><span class="line">$ ls</span><br><span class="line">bear.jpg</span><br><span class="line">$ ./rename-pics.sh</span><br><span class="line">Renaming bear.jpg to 2015-03-06-bear.jpg</span><br><span class="line">$ ls</span><br><span class="line">2015-03-06-bear.jpg</span><br></pre></td></tr></table></figure>
+<h1 id="parameters-0-9"><a href="#parameters-0-9" class="headerlink" title="parameters $0 - $9"></a>parameters $0 - $9</h1><ul>
+<li>todo</li>
+</ul>
+<h1 id="Exit-statuses"><a href="#Exit-statuses" class="headerlink" title="Exit statuses"></a>Exit statuses</h1><ul>
+<li>how to check the exit status of a command</li>
+<li>how to make decisions based on the status</li>
+<li>how to use exit statuses in your own scripts</li>
+</ul>
+<h4 id="Exit-Status-Return-Code"><a href="#Exit-Status-Return-Code" class="headerlink" title="Exit Status / Return Code"></a>Exit Status / Return Code</h4><ul>
+<li>Every command returns an exit status</li>
+<li>Range from 0 to 255</li>
+<li>0 = success</li>
+<li>Other than 0 = error condition</li>
+<li>Use for error checking</li>
+<li>Use man or info to find meaning of exit status</li>
+</ul>
+<h4 id="Checking-the-exit-status"><a href="#Checking-the-exit-status" class="headerlink" title="Checking the exit status"></a>Checking the exit status</h4><ul>
+<li>$? contains the return code of the previously executed command.</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ls /not/here</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"$?"</span></span><br><span class="line"></span><br><span class="line">OUTPUT:</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HOST=<span class="string">"google.com"</span></span><br><span class="line">ping -c l <span class="variable">$HOST</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"$?"</span> -eq <span class="string">"0"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$HOST</span> reachable."</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$HOST</span> unreachable."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HOST=<span class="string">"google.com"</span></span><br><span class="line">ping -c l <span class="variable">$HOST</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"$?"</span> -nq <span class="string">"0"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$HOST</span> unreachable."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HOST=<span class="string">"google.com"</span></span><br><span class="line">ping -c l <span class="variable">$HOST</span></span><br><span class="line">RETURN_CODE=$?</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$RETURN_CODE</span>"</span> -ne <span class="string">"0"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$HOST</span> unreachable."</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+<h4 id="amp-amp-and"><a href="#amp-amp-and" class="headerlink" title="&amp;&amp; and ||"></a>&amp;&amp; and ||</h4><ul>
+<li><p>&amp;&amp; = AND (前一个是true，后一个才会执行)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/bak &amp;&amp; cp test.txt /tmp/bak/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>|| = OR (前一个是false，后一个才会执行)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp test.txt /tmp/bak/ || cp test.txt /tmp</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">HOST=<span class="string">"google.com"</span></span><br><span class="line">ping -c l <span class="variable">$HOST</span> &amp;&amp; <span class="built_in">echo</span> <span class="string">"<span class="variable">$HOST</span> reachable."</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">HOST=<span class="string">"google.com"</span></span><br><span class="line">ping -c l <span class="variable">$HOST</span> || <span class="built_in">echo</span> <span class="string">"<span class="variable">$HOST</span> unreachable."</span></span><br></pre></td></tr></table></figure>
+<h4 id="The-semicolon"><a href="#The-semicolon" class="headerlink" title="The semicolon ;"></a>The semicolon ;</h4><ul>
+<li>separate commands with a semicolon to ensure they all get executed.</li>
+<li>和前一个命令是否成功无关，命令都会被执行，和换行是一个意思<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cp test.txt /tmp/bk/ ; cp test.txt /tmp</span><br><span class="line"><span class="comment">#Same as:</span></span><br><span class="line">cp test.txt /tmp/bk/</span><br><span class="line">cp test.txt /tmp</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Exit-command"><a href="#Exit-command" class="headerlink" title="Exit command"></a>Exit command</h4><ul>
+<li>Explicitly define the return code<ul>
+<li>exit 0 – 255</li>
+</ul>
+</li>
+<li>the default value is that of the last command executed</li>
+<li>脚本的任何地方都可以使用exit命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HOST=<span class="string">"google.com"</span></span><br><span class="line">ping -v 1 <span class="variable">$HOST</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"$?"</span> -ne <span class="string">"0"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"<span class="variable">$HOST</span> unreachable."</span></span><br><span class="line">    <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">exit</span> 0</span><br></pre></td></tr></table></figure>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><ul>
+<li>all command return an exit status</li>
+<li>0 - 255</li>
+<li>0 = success</li>
+<li>other than 0 = error condition</li>
+<li>$? contains the exit status</li>
+<li>Decision making -if , &amp;&amp;, ||</li>
+<li>exit</li>
+</ul>
+<h1 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h1><ul>
+<li>why to use functions</li>
+<li>how to create them</li>
+<li>how to use them</li>
+<li>variable scope</li>
+<li>function parameters</li>
+<li>exit statuses and return codes</li>
+</ul>
+<h4 id="Functions-1"><a href="#Functions-1" class="headerlink" title="Functions"></a>Functions</h4><ul>
+<li>if you’re repeating yourself ,use a function.</li>
+<li>reusable code</li>
+<li>must be defined before use</li>
+<li>has parameter support</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">function</span>-<span class="function"><span class="title">name</span></span>()&#123;</span><br><span class="line">    <span class="comment">#code goes here</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span>-<span class="function"><span class="title">name</span></span>()&#123;</span><br><span class="line">    <span class="comment">#code goes here</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">hello</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Hello!"</span></span><br><span class="line">&#125;</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">hello</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"hello！"</span></span><br><span class="line">    now</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">now</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"It's <span class="variable">$(date +%r)</span>"</span></span><br><span class="line">&#125;</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">hello</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"hello！"</span></span><br><span class="line">    now</span><br><span class="line">&#125;</span><br><span class="line">hello <span class="comment"># 会报错的</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">now</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"It's <span class="variable">$(date +%r)</span>"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Positional-Parameters"><a href="#Positional-Parameters" class="headerlink" title="Positional Parameters"></a>Positional Parameters</h4><ul>
+<li>functions can accept parameters</li>
+<li>the first parameter is stored in $1</li>
+<li>the second parameter is stored in $2, etc.</li>
+<li>$@ contains all of the parameters</li>
+<li>just like shell scripts.<ul>
+<li>$0 = the script itself, not function name</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">hello</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"Hello <span class="variable">$1</span>"</span></span><br><span class="line">&#125;</span><br><span class="line">hello Jason</span><br><span class="line"></span><br><span class="line"><span class="comment"># OUTPUT:</span></span><br><span class="line"><span class="comment"># Hello Jason</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">hello</span></span>()&#123;</span><br><span class="line">    <span class="keyword">for</span> NAME <span class="keyword">in</span> <span class="variable">$@</span></span><br><span class="line">    <span class="keyword">do</span>  </span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"hello <span class="variable">$NAME</span>"</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">hello jason dan ryan</span><br><span class="line"><span class="comment"># OUTPUT:</span></span><br><span class="line"><span class="comment"># Hello jason</span></span><br><span class="line"><span class="comment"># Hello dan</span></span><br><span class="line"><span class="comment"># Hello v</span></span><br></pre></td></tr></table></figure>
+<h4 id="variable-scope"><a href="#variable-scope" class="headerlink" title="variable scope"></a>variable scope</h4><ul>
+<li>by default, variables are global</li>
+<li>variable have to be defined before used.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GLOBAL_VAR=1</span><br><span class="line"><span class="comment"># GLOBAL_VAL is available</span></span><br><span class="line"><span class="comment"># in the function.</span></span><br><span class="line">my_function</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GLOBAL_VAL is NOT available</span></span><br><span class="line"><span class="comment"># in the function.</span></span><br><span class="line">my_function</span><br><span class="line">GLOBAL_VAR=1</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="function"><span class="title">my_function</span></span>()&#123;</span><br><span class="line">   GLOBAL_VAR=1 </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># GLOBAL_VAL is NOT available yet</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$GLOBAL_VAR</span></span><br><span class="line">my_function</span><br><span class="line"><span class="comment"># GLOBAL_VAL is NOW available yet</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$GLOBAL_VAR</span></span><br></pre></td></tr></table></figure>
+<h4 id="local-Variables"><a href="#local-Variables" class="headerlink" title="local Variables"></a>local Variables</h4><ul>
+<li>can only be accessed within the function.</li>
+<li>create using the local keyword<ul>
+<li>local LOCAL_VAR=1</li>
+</ul>
+</li>
+<li>only functions can have local variables</li>
+<li>best practice to keep variables local in functions</li>
+</ul>
+<h4 id="Exit-Status-Return-Code-1"><a href="#Exit-Status-Return-Code-1" class="headerlink" title="Exit Status(Return Code)"></a>Exit Status(Return Code)</h4><ul>
+<li>functions have an exit status</li>
+<li><p>explicitly</p>
+<ul>
+<li>return &lt;RETURN_CODE&gt;</li>
+</ul>
+</li>
+<li><p>Implicity</p>
+<ul>
+<li>the exit status of the last command executed in the function    </li>
+</ul>
+</li>
+<li><p>Valid exit codes range from 0- 255</p>
+</li>
+<li>0 = success</li>
+<li>$?=the exit status</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_function</span><br><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># todo :.</span></span><br></pre></td></tr></table></figure>
+<h4 id="Summary-1"><a href="#Summary-1" class="headerlink" title="Summary"></a>Summary</h4><ul>
+<li>DRY(don’t repeat yourself)</li>
+<li>global and local variables</li>
+<li>parameters</li>
+<li>exit statuses</li>
+</ul>
+<p>#Wildcards</p>
+<ul>
+<li><p>*-matches zero or more characters</p>
+<ul>
+<li>*.txt</li>
+<li>a*</li>
+<li>a*.txt</li>
+</ul>
+</li>
+<li><p>?-matches exactly one character</p>
+<ul>
+<li>?.txt   </li>
+<li>a?</li>
+<li>a?.txt</li>
+</ul>
+</li>
+</ul>
+<h1 id="More-Wildcards-Character-Classes"><a href="#More-Wildcards-Character-Classes" class="headerlink" title="More Wildcards-Character Classes"></a>More Wildcards-Character Classes</h1><ul>
+<li><p>[]- a character class</p>
+<ul>
+<li>matches any of the characters include between the brackets.<br>  matches exactly one character.</li>
+<li>[aeiou]</li>
+<li>ca[nt]*<ul>
+<li>can</li>
+<li>cat</li>
+<li>candy</li>
+<li>catch</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>[!]- matches any of the characters NOT included between the brackets. </p>
+<pre><code>matches exactly one character
+</code></pre><ul>
+<li>[!aeiou]*<ul>
+<li>baseball</li>
+<li>cricket</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="more-wildcards-Ranges"><a href="#more-wildcards-Ranges" class="headerlink" title="more wildcards - Ranges"></a>more wildcards - Ranges</h4><ul>
+<li>User two characters separated by hyphen to create range in a<br>  character class.</li>
+<li><p>[a-g]*</p>
+<ul>
+<li>matches all files that start with a,b,c,…g</li>
+</ul>
+</li>
+<li><p>[3-6]*</p>
+<ul>
+<li>matches all files that start with 3,4,5,6</li>
+</ul>
+</li>
+</ul>
+<h4 id="Name-character-class"><a href="#Name-character-class" class="headerlink" title="Name character class"></a>Name character class</h4><ul>
+<li>[[:alpha:]] 字母</li>
+<li>[[:alnum:]] 数字字母</li>
+<li>[[:digit:]] 数字</li>
+<li>[[:lower:]] 小写字母</li>
+<li>[[:space:]] 字符</li>
+<li>[[:upper:]] 大写字母</li>
+</ul>
+<h4 id="Mathching-wildcard-patterns"><a href="#Mathching-wildcard-patterns" class="headerlink" title="Mathching wildcard patterns"></a>Mathching wildcard patterns</h4><ul>
+<li>-escape character. use if you want to match a wildcard<br>  character<ul>
+<li>match all files that end with a question mark:<ul>
+<li>*\?<ul>
+<li>done？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h4><ul>
+<li>*</li>
+<li>?</li>
+<li>[]</li>
+<li>[0-3]</li>
+<li>[[:digit:]] </li>
+</ul>
+<h4 id="why-use-wildcards"><a href="#why-use-wildcards" class="headerlink" title="why use wildcards?"></a>why use wildcards?</h4><ul>
+<li>wildcards are great when you want to work on a group of files or directories.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> /var/www</span><br><span class="line">cp *.html /var/www-just-html</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">cd</span> /var/www</span><br><span class="line"><span class="keyword">for</span> FILE <span class="keyword">in</span> *.html</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"copy <span class="variable">$FILE</span>"</span></span><br><span class="line">    cp <span class="variable">$FILE</span> /var/www-just-html</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">OUTPUT:</span><br><span class="line">copy about.html</span><br><span class="line">copy content.html</span><br><span class="line">copy index.html</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> FILE <span class="keyword">in</span> /var/www/*.html</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">"copy <span class="variable">$FILE</span>"</span></span><br><span class="line">    cp <span class="variable">$FILE</span> /var/www-just-html</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">OUTPUT:</span><br><span class="line">copy /var/www/about.html</span><br><span class="line">copy /var/www/content.html</span><br><span class="line">copy /var/www/index.html</span><br></pre></td></tr></table></figure>
+<h4 id="summary-1"><a href="#summary-1" class="headerlink" title="summary"></a>summary</h4><ul>
+<li>just like on the command line.</li>
+<li>in loops</li>
+<li>supply a directory in the wildcard or use the cd command to change the current directory</li>
+</ul>
+<h1 id="Case-Statements"><a href="#Case-Statements" class="headerlink" title="Case Statements"></a>Case Statements</h1><ul>
+<li>alternative to if statements<ul>
+<li>if [“$VAR”=”one”]</li>
+<li>elif [“$VAR”=”two”]</li>
+<li>elif [“$VAR”=”three”]</li>
+<li>elif [“$VAR”=”four”]</li>
+</ul>
+</li>
+<li>may be easier to read than complex if statements</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$VAR</span>"</span> <span class="keyword">in</span></span><br><span class="line">    pattern_1)</span><br><span class="line">        <span class="comment"># commands go here</span></span><br><span class="line">        ;;</span><br><span class="line">    patter_N)</span><br><span class="line">        <span class="comment"># commands go here    </span></span><br><span class="line">        ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">    start)</span><br><span class="line">        /usr/sbin/sshd</span><br><span class="line">        ;;</span><br><span class="line">    stop)</span><br><span class="line">        <span class="built_in">kill</span> $(cat /var/run/sshd.pid)</span><br><span class="line">        ;;</span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">    start)</span><br><span class="line">        /usr/sbin/sshd</span><br><span class="line">        ;;</span><br><span class="line">    stop)</span><br><span class="line">        <span class="built_in">kill</span> $(cat /var/run/sshd.pid)</span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> start|stop"</span> ; <span class="built_in">exit</span> 1</span><br><span class="line">        ;;    </span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$1</span>"</span> <span class="keyword">in</span></span><br><span class="line">    start|START)</span><br><span class="line">        /usr/sbin/sshd</span><br><span class="line">        ;;</span><br><span class="line">    stop|STOP)</span><br><span class="line">        <span class="built_in">kill</span> $(cat /var/run/sshd.pid)</span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Usage: <span class="variable">$0</span> start|stop"</span> ; <span class="built_in">exit</span> 1</span><br><span class="line">        ;;    </span><br><span class="line"><span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"Enter y or n: "</span> ANSWER</span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$ANSWER</span>"</span> <span class="keyword">in</span></span><br><span class="line">    [yY]|[yY][eE][sS])</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"your answered yes."</span></span><br><span class="line">        ;;</span><br><span class="line">    [nN]|[nN][oO])</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"your answered no."</span></span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Invalid answer."</span></span><br><span class="line">    ;;</span><br><span class="line"> <span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">read</span> -p <span class="string">"Enter y or n: "</span> ANSWER</span><br><span class="line"><span class="keyword">case</span> <span class="string">"<span class="variable">$ANSWER</span>"</span> <span class="keyword">in</span></span><br><span class="line">    [yY]*)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"your answered yes."</span></span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"Invalid answer."</span></span><br><span class="line">    ;;</span><br><span class="line"> <span class="keyword">esac</span></span><br></pre></td></tr></table></figure>
+<h4 id="summary-2"><a href="#summary-2" class="headerlink" title="summary"></a>summary</h4><ul>
+<li>can be used in place of if statements.</li>
+<li>patterns can include wildcards.</li>
+<li>multiple pattern matching using a pipe.</li>
+</ul>
+<h1 id="Logging"><a href="#Logging" class="headerlink" title="Logging"></a>Logging</h1><h4 id="what-you-will-learn"><a href="#what-you-will-learn" class="headerlink" title="what you will learn"></a>what you will learn</h4><ul>
+<li>why log</li>
+<li>Syslog standard</li>
+<li>Generating log messages</li>
+<li>Custom logging functions</li>
+</ul>
+<h4 id="Logging-1"><a href="#Logging-1" class="headerlink" title="Logging"></a>Logging</h4><ul>
+<li>Logs are the who ,what , when, where ,and why</li>
+<li>Output may scroll of the screen</li>
+<li>Script may run unattended(via cron, etc)</li>
+</ul>
+<p>####<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">todo:</span><br></pre></td></tr></table></figure></p>
+<h4 id="summary-3"><a href="#summary-3" class="headerlink" title="summary"></a>summary</h4><ul>
+<li>Why log</li>
+<li>syslog standard</li>
+<li>Generating log messages</li>
+<li>Custom logging functions</li>
+</ul>
+<h1 id="while-loops"><a href="#while-loops" class="headerlink" title="while loops"></a>while loops</h1><ul>
+<li>what you will learn</li>
+<li>while loops</li>
+<li>infinite loops</li>
+<li>loop control<ul>
+<li>explicit number of times</li>
+<li>user input</li>
+<li>command exit status</li>
+</ul>
+</li>
+<li>reading files, line-by-line</li>
+<li>break and continue<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> [ condition_is _true ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">command</span> 1</span><br><span class="line">    <span class="built_in">command</span> 2</span><br><span class="line">    <span class="built_in">command</span> N</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">while</span> [ condition_is_true ]</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        <span class="comment"># commands change the condition</span></span><br><span class="line">        <span class="built_in">command</span> 1</span><br><span class="line">        <span class="built_in">command</span> 2</span><br><span class="line">        <span class="built_in">command</span> N</span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">```        </span><br><span class="line">        </span><br><span class="line"><span class="comment">#### infinite loops</span></span><br><span class="line">```bash</span><br><span class="line">    <span class="keyword">while</span> [ condition_is_true ]</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        <span class="comment"># commands do not change</span></span><br><span class="line">        <span class="comment"># the condition</span></span><br><span class="line">        <span class="built_in">command</span> N  </span><br><span class="line">    <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/28/redis/" rel="next" title="redis">
+                <i class="fa fa-chevron-left"></i> redis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c4dcd8467c98263" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjM4OC8xODkzNQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xiaoqiu Huang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#demo"><span class="nav-number">1.</span> <span class="nav-text">demo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#not-just-shell-script"><span class="nav-number">2.</span> <span class="nav-text">not just shell script</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Variables"><span class="nav-number">3.</span> <span class="nav-text">Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Variable-Usage"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">Variable Usage</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Variable-Names（等号前后不能有空格）"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">Variable Names（等号前后不能有空格）</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Tests：success-0-failed-1"><span class="nav-number">4.</span> <span class="nav-text">Tests：success:0 failed:1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#File-operators-tests"><span class="nav-number">5.</span> <span class="nav-text">File operators(tests)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#String-operators-tests"><span class="nav-number">6.</span> <span class="nav-text">String operators(tests)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Arithmetic-operators-tests"><span class="nav-number">7.</span> <span class="nav-text">Arithmetic operators(tests)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Making-Decisions-The-if-statement"><span class="nav-number">8.</span> <span class="nav-text">Making Decisions - The if statement</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#if-else"><span class="nav-number">9.</span> <span class="nav-text">if/else</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#if-elif-else"><span class="nav-number">10.</span> <span class="nav-text">if/elif/else</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#For-loop"><span class="nav-number">11.</span> <span class="nav-text">For loop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#parameters-0-9"><span class="nav-number">12.</span> <span class="nav-text">parameters $0 - $9</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Exit-statuses"><span class="nav-number">13.</span> <span class="nav-text">Exit statuses</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Exit-Status-Return-Code"><span class="nav-number">13.0.0.1.</span> <span class="nav-text">Exit Status / Return Code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Checking-the-exit-status"><span class="nav-number">13.0.0.2.</span> <span class="nav-text">Checking the exit status</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#amp-amp-and"><span class="nav-number">13.0.0.3.</span> <span class="nav-text">&amp;&amp; and ||</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-semicolon"><span class="nav-number">13.0.0.4.</span> <span class="nav-text">The semicolon ;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exit-command"><span class="nav-number">13.0.0.5.</span> <span class="nav-text">Exit command</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Summary"><span class="nav-number">13.0.0.6.</span> <span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Functions"><span class="nav-number">14.</span> <span class="nav-text">Functions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Functions-1"><span class="nav-number">14.0.0.1.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Positional-Parameters"><span class="nav-number">14.0.0.2.</span> <span class="nav-text">Positional Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#variable-scope"><span class="nav-number">14.0.0.3.</span> <span class="nav-text">variable scope</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#local-Variables"><span class="nav-number">14.0.0.4.</span> <span class="nav-text">local Variables</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Exit-Status-Return-Code-1"><span class="nav-number">14.0.0.5.</span> <span class="nav-text">Exit Status(Return Code)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Summary-1"><span class="nav-number">14.0.0.6.</span> <span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#More-Wildcards-Character-Classes"><span class="nav-number">15.</span> <span class="nav-text">More Wildcards-Character Classes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#more-wildcards-Ranges"><span class="nav-number">15.0.0.1.</span> <span class="nav-text">more wildcards - Ranges</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Name-character-class"><span class="nav-number">15.0.0.2.</span> <span class="nav-text">Name character class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mathching-wildcard-patterns"><span class="nav-number">15.0.0.3.</span> <span class="nav-text">Mathching wildcard patterns</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#summary"><span class="nav-number">15.0.0.4.</span> <span class="nav-text">summary</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#why-use-wildcards"><span class="nav-number">15.0.0.5.</span> <span class="nav-text">why use wildcards?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#summary-1"><span class="nav-number">15.0.0.6.</span> <span class="nav-text">summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Case-Statements"><span class="nav-number">16.</span> <span class="nav-text">Case Statements</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#summary-2"><span class="nav-number">16.0.0.1.</span> <span class="nav-text">summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Logging"><span class="nav-number">17.</span> <span class="nav-text">Logging</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#what-you-will-learn"><span class="nav-number">17.0.0.1.</span> <span class="nav-text">what you will learn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Logging-1"><span class="nav-number">17.0.0.2.</span> <span class="nav-text">Logging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#summary-3"><span class="nav-number">17.0.0.3.</span> <span class="nav-text">summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#while-loops"><span class="nav-number">18.</span> <span class="nav-text">while loops</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xiaoqiu Huang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

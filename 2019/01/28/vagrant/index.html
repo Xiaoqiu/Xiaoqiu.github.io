@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="qHmPkvPC9k6qmG74464HTdMeqvKorRahYwVLbmNVdtc">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vagrant,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="vagrant 命令123456789101112131415161718192021222324252627282930313233343536# 你创建一个配置文件，后面的 centos/7 是虚拟机要用的一个系统镜像（box）的名字vagrant init centos/7# 启动虚拟机vagrant upvagrant ssh# exitvagrant status# 彻底关闭虚拟机vag">
+<meta name="keywords" content="vagrant">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vagrant">
+<meta property="og:url" content="https://xiaoqiu.github.io/2019/01/28/vagrant/index.html">
+<meta property="og:site_name" content="Kate Blog">
+<meta property="og:description" content="vagrant 命令123456789101112131415161718192021222324252627282930313233343536# 你创建一个配置文件，后面的 centos/7 是虚拟机要用的一个系统镜像（box）的名字vagrant init centos/7# 启动虚拟机vagrant upvagrant ssh# exitvagrant status# 彻底关闭虚拟机vag">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-27T18:14:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vagrant">
+<meta name="twitter:description" content="vagrant 命令123456789101112131415161718192021222324252627282930313233343536# 你创建一个配置文件，后面的 centos/7 是虚拟机要用的一个系统镜像（box）的名字vagrant init centos/7# 启动虚拟机vagrant upvagrant ssh# exitvagrant status# 彻底关闭虚拟机vag">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'WHURAZXQLW',
+      apiKey: '464af143aa86152b3fa61e18403f9107',
+      indexName: 'xiaoqiu.github.io',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xiaoqiu.github.io/2019/01/28/vagrant/">
+
+
+
+
+
+  <title>vagrant | Kate Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-133352521-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Kate Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaoqiu.github.io/2019/01/28/vagrant/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xiaoqiu Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kate Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vagrant</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-28T00:40:49+08:00">
+                2019-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/vagrant/" itemprop="url" rel="index">
+                    <span itemprop="name">vagrant</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="vagrant-命令"><a href="#vagrant-命令" class="headerlink" title="vagrant 命令"></a>vagrant 命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 你创建一个配置文件，后面的 centos/7 是虚拟机要用的一个系统镜像（box）的名字</span></span><br><span class="line">vagrant init centos/7</span><br><span class="line"><span class="comment"># 启动虚拟机</span></span><br><span class="line">vagrant up</span><br><span class="line"></span><br><span class="line">vagrant ssh</span><br><span class="line"><span class="comment"># exit</span></span><br><span class="line"></span><br><span class="line">vagrant status</span><br><span class="line"></span><br><span class="line"><span class="comment"># 彻底关闭虚拟机</span></span><br><span class="line">vagrant halt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 休眠，被唤醒以后，在休眠之前运行的程序仍然会继续运行。 vagrant up 唤醒</span></span><br><span class="line">vagrant <span class="built_in">suspend</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 销毁虚拟机:这样再次启动虚拟机以后，Vagrant 会根据项目下的 Vagrantfile 里的配置，为你创建一台全新的虚拟机。</span></span><br><span class="line">vagrant destroy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 电脑上的镜像列表: 如果存在镜像（box） ,Vagrant 就不会去下载它了，直接会在电脑上复制一份这个镜像。</span></span><br><span class="line">vagrant list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装镜像</span></span><br><span class="line">vagrant box add ubuntu/trusty64</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手工下载box文件后，安装到box列表</span></span><br><span class="line">vagrant box add ubuntu/trusty64 ~/downloads/virtualbox.box</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查一下镜像是否有可用的升级</span></span><br><span class="line">vagrant box outdated</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行升级</span></span><br><span class="line">vagrant box update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除镜像</span></span><br><span class="line">vagrant box remove ubuntu/trusty64</span><br></pre></td></tr></table></figure>
+<h2 id="配置虚拟机"><a href="#配置虚拟机" class="headerlink" title="配置虚拟机"></a>配置虚拟机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install openssh-server -y</span><br><span class="line">  <span class="comment"># sshd配置文件是：sudo vi /etc/ssh/sshd_config</span></span><br><span class="line">  <span class="comment"># PasswordAuthentication yes      # 是否允许使用基于密码的认证。默认为"yes"。</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 最小化安装需要手动安装下列工具</span></span><br><span class="line">  yum -y install net-tools</span><br></pre></td></tr></table></figure>
+<h3 id="Vagrantfile-虚拟机配置文件"><a href="#Vagrantfile-虚拟机配置文件" class="headerlink" title="Vagrantfile 虚拟机配置文件"></a>Vagrantfile 虚拟机配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 运行命令 vagrant init centos/7 得到的vagrantfile内容如下：</span></span><br><span class="line"></span><br><span class="line">Vagrant.configure(<span class="string">"2"</span>) <span class="keyword">do</span> |config|</span><br><span class="line">    <span class="comment"># 配置内容放在这里</span></span><br><span class="line">  config.vm.box = <span class="string">"centos/7"</span> <span class="comment"># 指定了虚拟机使用的镜像是 centos/7</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h3 id="虚拟机网络配置"><a href="#虚拟机网络配置" class="headerlink" title="虚拟机网络配置"></a>虚拟机网络配置</h3><ul>
+<li>端口转发，私有网络，公有网络。</li>
+<li>vagrant up 一开始会清理之前配置的端口转发与网卡的配置。然后会根据我们在 Vagrantfile 里做的网络配置重新配置虚拟机内部的网络。</li>
+</ul>
+<h4 id="端口转发配置"><a href="#端口转发配置" class="headerlink" title="端口转发配置"></a>端口转发配置</h4><ul>
+<li>修改vagrantfile配置后，需要运行 vagrant reload<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 主机(host)上面的8080端口转发到虚拟机的80(guest)端口，</span></span><br><span class="line">config.vm.network <span class="string">"forwarded_port"</span>, guest: 80 , host: 8080</span><br><span class="line"></span><br><span class="line">Vagrant.configure(<span class="string">"2"</span>) <span class="keyword">do</span> |config|</span><br><span class="line">    config.vm.box = <span class="string">"centos/7"</span></span><br><span class="line">    config.vm.network <span class="string">"forwarded_port"</span>, guest: 80 , host: 8080</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">vagrant reload <span class="comment"># 重启虚拟机</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="私有网络配置"><a href="#私有网络配置" class="headerlink" title="私有网络配置"></a>私有网络配置</h4><ul>
+<li>在主机和虚拟机之前创建一个私有网络，或者叫专用网络。</li>
+<li>这个网络只有两个设备，主机和这个主机创建的使用这个网络的虚拟机</li>
+<li>ip : 为虚拟机分配的在这个虚拟网络上的IP地址</li>
+<li>主机可以通过这个IP地址访问虚拟机</li>
+<li>路由上的其他设备不能访问这个私有网络的虚拟机<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">config.vm.network <span class="string">"private_network"</span>, ip:<span class="string">"192.168.33.10"</span></span><br><span class="line"></span><br><span class="line">vagrant reload</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="公有网络配置"><a href="#公有网络配置" class="headerlink" title="公有网络配置"></a>公有网络配置</h4><ul>
+<li>路由器创建的局域网，路由会为虚拟机分配一个IP</li>
+<li>虚拟机和主机在同一个网络</li>
+<li><code>同一网络的其他设备可以直接通过虚拟机在公有网络上的IP地址访问虚拟机</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看主机的在网络上的ip, 一般：12.168.31.x </span></span><br><span class="line">ifconfig</span><br><span class="line"><span class="comment"># 修改Vagrantfile</span></span><br><span class="line">config.vm.network <span class="string">"public_network"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启虚拟机</span></span><br><span class="line">vagrant reload</span><br><span class="line"></span><br><span class="line"><span class="comment"># 登录虚拟机</span></span><br><span class="line">vagrant ssh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在虚拟机运行，查看网络命令 ：  192.168.8.132</span></span><br><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="同步目录"><a href="#同步目录" class="headerlink" title="同步目录"></a>同步目录</h3><h4 id="默认同步目录"><a href="#默认同步目录" class="headerlink" title="默认同步目录"></a>默认同步目录</h4><ul>
+<li>项目所在目录例如Vagrantfile文件所在目录</li>
+<li>每次重启(vagrant reload)都会同步到虚拟机/vagrant目录下</li>
+<li>禁用默认的同步目录<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 禁用默认的同步目录, 重启生效</span></span><br><span class="line"><span class="comment"># "." 主机的当前目录</span></span><br><span class="line"><span class="comment"># "/vagrant" 虚拟机的同步目录</span></span><br><span class="line">config.vm.synced_folder <span class="string">"."</span>, <span class="string">"/vagrant"</span>, disabled:<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="设置同步目录"><a href="#设置同步目录" class="headerlink" title="设置同步目录"></a>设置同步目录</h4><ul>
+<li>同步目录的类型默认就会是 Virtualbox。这种类型的同步需要你在虚拟机上安装 virtualbox guest addition，如果没安装，在启动虚拟机的时候会报错。</li>
+<li>这种类型的共享目录存在性能问题</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cogfig.vm.synced_folder <span class="string">"./app"</span>, <span class="string">"/mnt"</span></span><br></pre></td></tr></table></figure>
+<h4 id="NFS类型的同步目录"><a href="#NFS类型的同步目录" class="headerlink" title="NFS类型的同步目录"></a>NFS类型的同步目录</h4><ul>
+<li>macOS 平台用户可以使用 NFS 类型的共享目录，Windows 用户无法使用这种类型的共享目录</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.synced_folder <span class="string">"./app"</span>, <span class="string">"/mnt"</span>, <span class="built_in">type</span>: <span class="string">"nfs"</span></span><br></pre></td></tr></table></figure>
+<h4 id="SMB类型同步目录"><a href="#SMB类型同步目录" class="headerlink" title="SMB类型同步目录"></a>SMB类型同步目录</h4><ul>
+<li>Windows 用户可以使用 SMB 这种类型的同步目录<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install cifs-utils -y</span><br><span class="line">config.vm.synced_folder <span class="string">"app"</span>, <span class="string">"/mnt"</span>, <span class="built_in">type</span>: <span class="string">"smb"</span>, smb_username: <span class="string">"wanghao"</span>, smb_password: <span class="string">"密码"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Virtualbox类型的同步目录"><a href="#Virtualbox类型的同步目录" class="headerlink" title="Virtualbox类型的同步目录"></a>Virtualbox类型的同步目录</h4><ul>
+<li>虚拟机上安装了 virtualbox guest addition</li>
+<li>这种类型的共享目录存在性能问题</li>
+<li>如果网站应用只有少量文件还可以，如果文件数量太多，在这种类型的共享目录上运行的网站会非常慢。</li>
+</ul>
+<h4 id="同步目录的用户权限"><a href="#同步目录的用户权限" class="headerlink" title="同步目录的用户权限"></a>同步目录的用户权限</h4><ul>
+<li><h3 id="定义多台虚拟机"><a href="#定义多台虚拟机" class="headerlink" title="定义多台虚拟机"></a>定义多台虚拟机</h3></li>
+<li>如果你想在之前创建的 awesome-project 里测试多机配置，先把之前创建的虚拟机使用 vagrant destroy 销毁掉，然后添加新的多机配置，再去启动</li>
+<li><p>在 Vagrantfile 里定义一台机器，就是一个代码块：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Vagrant.configure(<span class="string">"2"</span>) <span class="keyword">do</span> |config|</span><br><span class="line">  config.vm.box = <span class="string">"centos/7"</span></span><br><span class="line"></span><br><span class="line">  config.vm.define <span class="string">"web"</span> <span class="keyword">do</span> |web|</span><br><span class="line">    web.vm.network <span class="string">"private_network"</span>, ip: <span class="string">"192.168.33.11"</span></span><br><span class="line">  end</span><br><span class="line"></span><br><span class="line">  config.vm.define <span class="string">"db"</span> <span class="keyword">do</span> |db|</span><br><span class="line">    db.vm.network <span class="string">"private_network"</span>, ip: <span class="string">"192.168.33.12"</span></span><br><span class="line">  end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多台共用的一些配置可以放在定义虚拟机的代码块之外，比如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">config.vm.box = <span class="string">"centos/7"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+</li>
+<li>执行 vagrant up，可以同时启动定义的所有的虚拟机。</li>
+<li>也可以单独启动某台机器 vagrant reload web</li>
+</ul>
+<h3 id="创建自己的box"><a href="#创建自己的box" class="headerlink" title="创建自己的box"></a>创建自己的box</h3><ul>
+<li>参考：<a href="http://www.cnblogs.com/davenkin/p/create-own-vagrant-box.html" target="_blank" rel="noopener">http://www.cnblogs.com/davenkin/p/create-own-vagrant-box.html</a></li>
+<li><a href="http://www.blue7wings.com/php%20tutorial/Better-Dev-Envirenment-Vagrant.html" target="_blank" rel="noopener">http://www.blue7wings.com/php%20tutorial/Better-Dev-Envirenment-Vagrant.html</a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先关闭虚拟机：</span></span><br><span class="line">vagrant halt</span><br><span class="line"></span><br><span class="line">vagrant package 当前要被打包的系统名 --output 打包到的地址/包名</span><br><span class="line"><span class="comment"># 由于在Vagrantfile中，我们为虚拟机指定了名字“my-vertualbox”，在创建box时我们可以直接通过该名字指向新建的虚拟机:</span></span><br><span class="line">vagrant package --base my-virtualbox</span><br><span class="line"></span><br><span class="line"><span class="comment"># Vagrant将创建名为package.box的新的box，此后我们便可以使用该package.box作为其他虚拟机的基础box了</span></span><br><span class="line">vagrant package</span><br><span class="line"></span><br><span class="line"><span class="comment"># 再把Vagrantfile拷贝过去 两条命令就可以重现当前的开发环境，</span></span><br><span class="line"> vagrant box add server package.box</span><br><span class="line"> vagrant up</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vagrant/" rel="tag"># vagrant</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/27/sed/" rel="next" title="sed">
+                <i class="fa fa-chevron-left"></i> sed
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/28/ansible/" rel="prev" title="ansible">
+                ansible <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5c4dcd8467c98263" async="async"></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjM4OC8xODkzNQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Xiaoqiu Huang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vagrant-命令"><span class="nav-number">1.</span> <span class="nav-text">vagrant 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置虚拟机"><span class="nav-number">2.</span> <span class="nav-text">配置虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vagrantfile-虚拟机配置文件"><span class="nav-number">2.1.</span> <span class="nav-text">Vagrantfile 虚拟机配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟机网络配置"><span class="nav-number">2.2.</span> <span class="nav-text">虚拟机网络配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#端口转发配置"><span class="nav-number">2.2.1.</span> <span class="nav-text">端口转发配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#私有网络配置"><span class="nav-number">2.2.2.</span> <span class="nav-text">私有网络配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#公有网络配置"><span class="nav-number">2.2.3.</span> <span class="nav-text">公有网络配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步目录"><span class="nav-number">2.3.</span> <span class="nav-text">同步目录</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#默认同步目录"><span class="nav-number">2.3.1.</span> <span class="nav-text">默认同步目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置同步目录"><span class="nav-number">2.3.2.</span> <span class="nav-text">设置同步目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NFS类型的同步目录"><span class="nav-number">2.3.3.</span> <span class="nav-text">NFS类型的同步目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SMB类型同步目录"><span class="nav-number">2.3.4.</span> <span class="nav-text">SMB类型同步目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Virtualbox类型的同步目录"><span class="nav-number">2.3.5.</span> <span class="nav-text">Virtualbox类型的同步目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#同步目录的用户权限"><span class="nav-number">2.3.6.</span> <span class="nav-text">同步目录的用户权限</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义多台虚拟机"><span class="nav-number">2.4.</span> <span class="nav-text">定义多台虚拟机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建自己的box"><span class="nav-number">2.5.</span> <span class="nav-text">创建自己的box</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xiaoqiu Huang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
