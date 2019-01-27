@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="Kate Blog">
 <meta property="og:description" content="ansible dcos     docker  kubernate  math mysql  redis  sed     shell    vagrant">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-27T18:33:09.000Z">
+<meta property="og:updated_time" content="2019-01-27T18:48:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tags">
 <meta name="twitter:description" content="ansible dcos     docker  kubernate  math mysql  redis  sed     shell    vagrant">
@@ -101,7 +101,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -240,6 +240,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            Schedule
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -316,19 +326,14 @@
       <div class="post-body">
         
         
-          <ul>
-<li>ansible</li>
-<li>dcos    </li>
-<li>docker </li>
-<li>kubernate </li>
-<li>math</li>
-<li>mysql </li>
-<li>redis </li>
-<li>sed    </li>
-<li>shell   </li>
-<li>vagrant  </li>
-</ul>
-
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+                11 tags in total
+            </div>
+            <div class="tag-cloud-tags">
+              <a href="/tags/ansible/" style="font-size: 12px; color: #ccc">ansible</a> <a href="/tags/dcos/" style="font-size: 12px; color: #ccc">dcos</a> <a href="/tags/docker/" style="font-size: 12px; color: #ccc">docker</a> <a href="/tags/kubernate/" style="font-size: 12px; color: #ccc">kubernate</a> <a href="/tags/math/" style="font-size: 12px; color: #ccc">math</a> <a href="/tags/mysql/" style="font-size: 12px; color: #ccc">mysql</a> <a href="/tags/redis/" style="font-size: 12px; color: #ccc">redis</a> <a href="/tags/sed/" style="font-size: 12px; color: #ccc">sed</a> <a href="/tags/shell/" style="font-size: 12px; color: #ccc">shell</a> <a href="/tags/test/" style="font-size: 12px; color: #ccc">test</a> <a href="/tags/vagrant/" style="font-size: 12px; color: #ccc">vagrant</a>
+            </div>
+          </div>
         
       </div>
       
@@ -371,6 +376,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/土星.jpg" alt="Xiaoqiu Huang">
+            
               <p class="site-author-name" itemprop="name">Xiaoqiu Huang</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -382,7 +389,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -392,10 +399,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -403,10 +410,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">10</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -429,6 +436,13 @@
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -476,11 +490,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     

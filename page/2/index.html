@@ -97,7 +97,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -237,6 +237,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            Schedule
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -308,12 +318,260 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xiaoqiu.github.io/2019/01/27/sed/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xiaoqiu Huang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/土星.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kate Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/27/sed/" itemprop="url">sed</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-27T21:32:13+08:00">
+                2019-01-27
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-27T23:00:34+08:00">
+                2019-01-27
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/sed/" itemprop="url" rel="index">
+                    <span itemprop="name">sed</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Sed-Tutorial"><a href="#Sed-Tutorial" class="headerlink" title="Sed Tutorial"></a>Sed Tutorial</h1><h2 id="Sed-Home"><a href="#Sed-Home" class="headerlink" title="Sed - Home"></a>Sed - Home</h2><h2 id="Sed-Overview"><a href="#Sed-Overview" class="headerlink" title="Sed - Overview"></a>Sed - Overview</h2><ul>
+<li>The acronym SED stands for Stream EDitor. </li>
+<li>Typical Uses of SED</li>
+<li><p>SED can be used in many different ways, such as:</p>
+</li>
+<li><p>Text substitution,</p>
+</li>
+<li>Selective printing of text files,</li>
+<li>In-a-place editing of text files,</li>
+<li>Non-interactive editing of text files, and many more.</li>
+</ul>
+<h2 id="Sed-Environment"><a href="#Sed-Environment" class="headerlink" title="Sed - Environment"></a>Sed - Environment</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sed --version</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">yum -y install sed</span><br></pre></td></tr></table></figure>
+<h2 id="Sed-Workflow"><a href="#Sed-Workflow" class="headerlink" title="Sed - Workflow"></a>Sed - Workflow</h2><p>SED follows a simple workflow: Read, Execute, and Display. </p>
+<ul>
+<li><p>Read: SED reads a line from the input stream (file, pipe, or stdin) and stores it in its internal buffer called pattern buffer.</p>
+</li>
+<li><p>Execute: All SED commands are applied sequentially on the pattern buffer. By default, SED commands are applied on all lines (globally) unless line addressing is specified.</p>
+</li>
+<li><p>Display: Send the (modified) contents to the output stream. After sending the data, the pattern buffer will be empty.</p>
+</li>
+</ul>
+<p>The above process repeats until the file is exhausted.</p>
+<ul>
+<li>sed命令作用于缓存里面的文本，然后输出并删除缓存。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 把sed命令作用于quote.txt，并输出。</span></span><br><span class="line">sed <span class="string">''</span> quote.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把sed命令作用于输入，并输出。 ctl + d 退出。</span></span><br><span class="line">sed <span class="string">''</span></span><br></pre></td></tr></table></figure>
+<h2 id="Sed-Basic-Syntax"><a href="#Sed-Basic-Syntax" class="headerlink" title="Sed - Basic Syntax"></a>Sed - Basic Syntax</h2><ul>
+<li>命令行语法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># sed命令在''里面</span></span><br><span class="line">sed [-n] [-e] <span class="string">'command(s)'</span> files </span><br><span class="line"></span><br><span class="line"><span class="comment"># sed命令在scriptfile里面</span></span><br><span class="line">sed [-n] -f scriptfile files</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除行：1，2，5, 多个sed命令作用于缓存</span></span><br><span class="line">sed -e <span class="string">'1d'</span> -e <span class="string">'2d'</span> -e <span class="string">'5d'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建命令文本</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"1d\n2d\n5d"</span> &gt; commands.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取命令文本并执行</span></span><br><span class="line">sed -f commands.txt books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># -n 禁用默认输出缓存内容 </span></span><br><span class="line">sed -n <span class="string">'p'</span> books.txt <span class="comment"># 只会输出一次</span></span><br><span class="line"><span class="comment"># -e 后跟执行命令</span></span><br><span class="line"><span class="comment"># -f 后跟执行命令文件</span></span><br></pre></td></tr></table></figure>
+<h2 id="Sed-Loops"><a href="#Sed-Loops" class="headerlink" title="Sed - Loops"></a>Sed - Loops</h2><h2 id="Sed-Branches"><a href="#Sed-Branches" class="headerlink" title="Sed - Branches"></a>Sed - Branches</h2><h2 id="Sed-Pattern-Buffer-：-匹配行号"><a href="#Sed-Pattern-Buffer-：-匹配行号" class="headerlink" title="Sed - Pattern Buffer ： 匹配行号"></a>Sed - Pattern Buffer ： 匹配行号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 只作用于特定行，只打印第三行</span></span><br><span class="line">sed -n <span class="string">'3p'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印2-5行</span></span><br><span class="line">sed -n <span class="string">'2,5 p'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印最后一行, $表示最后一行</span></span><br><span class="line">sed -n <span class="string">'$ p'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印3到最后一行</span></span><br><span class="line">sed -n <span class="string">'3,$ p'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印第n行，和第n行后面的m行. n,+m </span></span><br><span class="line">sed -n <span class="string">'2,+4 p'</span> books.txt <span class="comment"># 打印第2行，和第2行后面的4行</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># out:</span></span><br><span class="line"><span class="comment"># 2) The Two Towers, J. R. R. Tolkien, 352 </span></span><br><span class="line"><span class="comment"># 3) The Alchemist, Paulo Coelho, 197 </span></span><br><span class="line"><span class="comment"># 4) The Fellowship of the Ring, J. R. R. Tolkien, 432 </span></span><br><span class="line"><span class="comment"># 5) The Pilgrimage, Paulo Coelho, 288 </span></span><br><span class="line"><span class="comment"># 6) A Game of Thrones, George R. R. Martin, 864</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从第m行开始，每隔n行打印。m~n</span></span><br><span class="line">sed -n <span class="string">'1~2 p'</span> books.txt <span class="comment"># 打印第1行，和每隔2行打印一次</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># out：</span></span><br><span class="line"><span class="comment"># 1) A Storm of Swords, George R. R. Martin, 1216 </span></span><br><span class="line"><span class="comment"># 3) The Alchemist, Paulo Coelho, 197 </span></span><br><span class="line"><span class="comment"># 5) The Pilgrimage, Paulo Coelho, 288</span></span><br></pre></td></tr></table></figure>
+<h2 id="Sed-Pattern-Range-匹配复杂的正则，或者文本"><a href="#Sed-Pattern-Range-匹配复杂的正则，或者文本" class="headerlink" title="Sed - Pattern Range : 匹配复杂的正则，或者文本"></a>Sed - Pattern Range : 匹配复杂的正则，或者文本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">## 打印包含字符串Paulo的行</span></span><br><span class="line">sed -n <span class="string">'/Paulo/ p'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment">## 打印包含Alchemist字符串的行开始，到第5行</span></span><br><span class="line">sed -n <span class="string">'/Alchemist/, 5 p'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment">#  3) The Alchemist, Paulo Coelho, 197 </span></span><br><span class="line"><span class="comment">#  4) The Fellowship of the Ring, J. R. R. Tolkien, 432 </span></span><br><span class="line"><span class="comment">#  5) The Pilgrimage, Paulo Coelho, 288 </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 找到匹配字符串后打印后面所有的行</span></span><br><span class="line">sed -n <span class="string">'/The/, $ p'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印两个匹配字符串之前的行</span></span><br><span class="line">sed -n <span class="string">'/Two/, /Pilgrimage/ p'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 找到匹配字符串后打印该行，并打印后面4行</span></span><br><span class="line">sed -n <span class="string">'/Two/, +4 p'</span> books.txt</span><br></pre></td></tr></table></figure>
+<h2 id="Sed-Basic-Commands"><a href="#Sed-Basic-Commands" class="headerlink" title="Sed - Basic Commands"></a>Sed - Basic Commands</h2><h3 id="delelte-command"><a href="#delelte-command" class="headerlink" title="delelte command"></a>delelte command</h3><pre><code>- 只是删除缓存的内容，不会改变文件本身
+- [address1[,address2]]d 
+- address1 and address2 are the starting and the ending addresses respectively, which can be either line numbers or pattern strings. Both of these addresses are optional parameters.
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'d'</span> books.txt <span class="comment">## 没有行号，默认操作每一行。</span></span><br><span class="line"></span><br><span class="line">sed <span class="string">'4d'</span> books.txt <span class="comment">## 删除第4行</span></span><br><span class="line"></span><br><span class="line">sed <span class="string">'2，4 d'</span> books.txt <span class="comment">## 删除操作也可以传范围参数：2-4行</span></span><br><span class="line"></span><br><span class="line">sed <span class="string">'/Paulo Coelho/ d'</span> books.txt <span class="comment">## 删除匹配Paulo Coelho的行</span></span><br><span class="line"></span><br><span class="line">sed <span class="string">'/Storm/,/Fellowship/ d'</span> books.txt <span class="comment">## 删除匹配 Storm的行 和 Fellowship行，和他们之前的所有行。</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line"><span class="comment">### write command</span></span><br><span class="line"></span><br><span class="line">- 保存缓存的内容到一个文件</span><br><span class="line"></span><br><span class="line">- [address1[,address2]]w file </span><br><span class="line"></span><br><span class="line">- file参数，存在会被覆盖，不存在会被创建</span><br><span class="line"></span><br><span class="line">- w 和file之前必须只有一个空格</span><br><span class="line"></span><br><span class="line">- cp命令也可以复制文件，但是sed的复制功能可以控制到行</span><br><span class="line"></span><br><span class="line">- ， +  ~ 这三个操作符都是可以用的</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line"></span><br><span class="line">sed -n <span class="string">'w books.bak'</span> books.txt <span class="comment">## 把文件拷贝一份并写入books.bak</span></span><br><span class="line"></span><br><span class="line">diff books.bak books.txt</span><br><span class="line"><span class="built_in">echo</span> $? <span class="comment">## 输出：0表示文件是一样的</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sed -n <span class="string">'2~2 w junk.txt'</span> books.txt <span class="comment">## 从第二行开始复制偶数行</span></span><br><span class="line">cat junk.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把每个匹配字符串都保存在各自的文件里面</span></span><br><span class="line">sed -n -e <span class="string">'/Martin/ w Martin.txt'</span> -e <span class="string">'/Paulo/ w Paulo.txt'</span> -e <span class="string">'/Tolkien/ w Tolkien.txt'</span> books.txt</span><br></pre></td></tr></table></figure>
+<h3 id="Append-command"><a href="#Append-command" class="headerlink" title="Append command"></a>Append command</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[address]a Append text </span><br><span class="line"></span><br><span class="line"><span class="comment"># 在第4行后面多加一行： a是append command</span></span><br><span class="line">sed <span class="string">'4 a 7) Adultry, Paulo Coelho, 234'</span> books.txt</span><br><span class="line"><span class="comment"># 找到匹配的字符在后面多加一行：</span></span><br><span class="line">sed <span class="string">'/The Alchemist/ a 7) Adultry, Paulo Coelho, 234'</span> books.txt</span><br></pre></td></tr></table></figure>
+<h3 id="Change-Command（重要，所有脚本都需要改服务配置）"><a href="#Change-Command（重要，所有脚本都需要改服务配置）" class="headerlink" title="Change Command（重要，所有脚本都需要改服务配置）"></a>Change Command（重要，所有脚本都需要改服务配置）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[address1[,address2]]c Replace text</span><br><span class="line"><span class="comment"># 把第三行替换为新内容</span></span><br><span class="line">sed <span class="string">'3 c 3) Adultry, Paulo Coelho, 324'</span> books.txt</span><br><span class="line"><span class="comment"># 替换匹配字符串的行</span></span><br><span class="line">sed <span class="string">'/The Alchemist/ c 3) Adultry, Paulo Coelho, 324'</span> books.txt</span><br><span class="line"><span class="comment"># 把第4行，第6行替换为新内容</span></span><br><span class="line">sed <span class="string">'4, 6 c 4) Adultry, Paulo Coelho, 324'</span> books.txt</span><br></pre></td></tr></table></figure>
+<h3 id="Insert-Command"><a href="#Insert-Command" class="headerlink" title="Insert Command"></a>Insert Command</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在某一行之前插入内容</span></span><br><span class="line">[address]i Insert text</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在第4行之前插入内容</span></span><br><span class="line"> sed <span class="string">'4 i 7) Adultry, Paulo Coelho, 324'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在首行插入，（在第一行之前插入）</span></span><br><span class="line">sed <span class="string">'1 i 7) Adultry, Paulo Coelho, 324'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在最后一行前面插入多行，用 \ 号分割</span></span><br><span class="line">sed <span class="string">'$ i 7) Adultry, Paulo Coelho, 324 \</span></span><br><span class="line"><span class="string">8) Eleven Minutes, Paulo Coelho, 304'</span> books.txt</span><br></pre></td></tr></table></figure>
+<h3 id="Translate-Command"><a href="#Translate-Command" class="headerlink" title="Translate Command"></a>Translate Command</h3><ul>
+<li>转换命令 y </li>
+<li>[address1[,address2]]y/list-1/list-2/</li>
+<li>转换是根据字符位置的。list1的字符转换为list2对应位置的字符。</li>
+<li>正则，字符类别是不支持的</li>
+<li>list1的大小必须和list2一样</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#y后面不能有空格</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"1 5 15 20"</span>  | sed <span class="string">'y/151520/IVXVXX/'</span></span><br></pre></td></tr></table></figure>
+<h3 id="l-command"><a href="#l-command" class="headerlink" title="l command"></a>l command</h3><ul>
+<li>l 命令显示隐藏的字符，例如tad, spaces</li>
+<li>tad字符是\t， 结束字符是$</li>
+<li>[address1[,address2]]l</li>
+<li>[address1[,address2]]l [len] </li>
+<li>it also accepts line numbers and patterns as an address.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个文件，包含tab字符。替换文件中所有spaces为tab这个方式创建。</span></span><br><span class="line">sed <span class="string">'s/ /\t/g'</span> books.txt &gt; junk.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示隐藏字符使用|命令</span></span><br><span class="line"><span class="comment"># This option is GNU specific and may not work with other variants of the SED.</span></span><br><span class="line">sed -n <span class="string">'l'</span> junk.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 固定25个字符一行</span></span><br><span class="line">sed -n <span class="string">'l 25'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 限制改为0， 不换行出除非出现新的行</span></span><br><span class="line">sed -n <span class="string">'l 0'</span> books.txt </span><br><span class="line"></span><br><span class="line"><span class="comment"># out:</span></span><br><span class="line"><span class="comment"># 1) A Storm of Swords,George R. R. Martin,1216$ </span></span><br><span class="line"><span class="comment"># 2) The Two Towers,J. R. R. Tolkien,352$ </span></span><br><span class="line"><span class="comment"># 3) The Alchemist,Paulo Coelho,197$ </span></span><br><span class="line"><span class="comment"># 4) The Fellowship of the Ring,J. R. R. Tolkien,432$ </span></span><br><span class="line"><span class="comment"># 5) The Pilgrimage,Paulo Coelho,288$ </span></span><br><span class="line"><span class="comment"># 6) A Game of Thrones,George R. R. Martin,864$</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Quit-Command"><a href="#Quit-Command" class="headerlink" title="Quit Command"></a>Quit Command</h3><ul>
+<li>中断执行流</li>
+<li>一般sed跟read, execute, repeat 工作流，当遇到quit命令，停止当前执行。</li>
+<li>不跟地址范围，只支持一个地址。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[address]q </span><br><span class="line">[address]q [value]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只打印前3行</span></span><br><span class="line">sed <span class="string">'3 q'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用模式匹配，匹配到这个字符串就不再执行</span></span><br><span class="line">sed <span class="string">'/The Alchemist/ q'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># sed 退出可以定义退出状态。 </span></span><br><span class="line">sed <span class="string">'/The Alchemist/ q 100'</span> books.txt</span><br><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Read-Command"><a href="#Read-Command" class="headerlink" title="Read Command"></a>Read Command</h3><ul>
+<li>[address]r file</li>
+<li>r 后面必须有一个空格</li>
+<li>可以接受地址范围<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"This is junk text."</span> &gt; junk.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取junk.txt文件内容，并插入到books.txt的第三行后面。</span></span><br><span class="line">sed <span class="string">'3 r junk.txt'</span> books.txt</span><br><span class="line"><span class="comment">#out:</span></span><br><span class="line"><span class="comment"># 1) A Storm of Swords, George R. R. Martin, 1216 </span></span><br><span class="line"><span class="comment"># 2) The Two Towers, J. R. R. Tolkien, 352 </span></span><br><span class="line"><span class="comment"># 3) The Alchemist, Paulo Coelho, 197 </span></span><br><span class="line"><span class="comment"># This is junk text. </span></span><br><span class="line"><span class="comment"># 4) The Fellowship of the Ring, J. R. R. Tolkien, 432 </span></span><br><span class="line"><span class="comment"># 5) The Pilgrimage, Paulo Coelho, 288 </span></span><br><span class="line"><span class="comment"># 6) A Game of Thrones, George R. R. Martin, 864</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取junk.txt的内容，插入books.txt的第三行和第五行后面</span></span><br><span class="line">sed <span class="string">'3,5 r junk.txt'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 读取junk.txt的内容，插入books.txt的匹配字符的行的后面</span></span><br><span class="line">sed <span class="string">'/Paulo/ r junk.txt'</span> books.txt</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Execute-Command"><a href="#Execute-Command" class="headerlink" title="Execute Command"></a>Execute Command</h3><ul>
+<li>可以用来执行外部命令</li>
+<li>[address1[,address2]]e [command]</li>
+<li>接受模式匹配作为地址</li>
+<li>command参数是可选的。如果e后面不带command的，就会把缓存内容作为外部命令</li>
+<li>缓存内容就是文件内容<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在第三行之前执行date命令</span></span><br><span class="line">sed <span class="string">'3 e date'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># out:</span></span><br><span class="line"><span class="comment"># 1) A Storm of Swords, George R. R. Martin, 1216 </span></span><br><span class="line"><span class="comment"># 2) The Two Towers, J. R. R. Tolkien, 352 </span></span><br><span class="line"><span class="comment"># Sun Sep  7 18:04:49 IST 2014 </span></span><br><span class="line"><span class="comment"># 3) The Alchemist, Paulo Coelho, 197 </span></span><br><span class="line"><span class="comment"># 4) The Fellowship of the Ring, J. R. R. Tolkien, 432 </span></span><br><span class="line"><span class="comment"># 5) The Pilgrimage, Paulo Coelho, 288 </span></span><br><span class="line"><span class="comment"># 6) A Game of Thrones, George R. R. Martin, 864</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 匹配字符串的前一行都会执行date</span></span><br><span class="line">sed <span class="string">'/Paulo/ e date'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># e后面不带command，把缓存里面的文件内容作为command</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"date\ncal\nuname"</span> &gt; commands.txt</span><br><span class="line">cat commands.txt</span><br><span class="line">sed <span class="string">'e'</span> commands.txt</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Miscellaneous-Commands-混杂的命令"><a href="#Miscellaneous-Commands-混杂的命令" class="headerlink" title="Miscellaneous Commands 混杂的命令"></a>Miscellaneous Commands 混杂的命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Sed-Special-Characters"><a href="#Sed-Special-Characters" class="headerlink" title="Sed - Special Characters"></a>Sed - Special Characters</h2><ul>
+<li>提供了连个特殊字符，也作为命令</li>
+</ul>
+<h3 id="Command"><a href="#Command" class="headerlink" title="= Command"></a>= Command</h3><ul>
+<li>显示行号</li>
+<li>[/pattern/]= </li>
+<li>[address1[,address2]]=</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示所有行的行号,行号在内容之前</span></span><br><span class="line">sed <span class="string">'='</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示第一行，第四行的行号,行号在内容之前</span></span><br><span class="line">sed <span class="string">'1,4 ='</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示最后一行的行号，但是禁用默认打印，这样就是总得行数</span></span><br><span class="line">sed <span class="string">'$ ='</span> books.txt</span><br></pre></td></tr></table></figure>
+<h3 id="amp-Command"><a href="#amp-Command" class="headerlink" title="&amp; Command"></a>&amp; Command</h3><ul>
+<li>匹配字符成功后，&amp;保存匹配的内容。&amp;作为一个占位符后面使用。<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用正则匹配出每行的数字，然后在每个数字签名加上Book number</span></span><br><span class="line">sed <span class="string">'s/[[:digit:]]/Book number &amp;/'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在书页数前面加上"Pages =" </span></span><br><span class="line">sed <span class="string">'s/[[:digit:]]*$/Pages = &amp;/'</span> books.txt</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Sed-Strings"><a href="#Sed-Strings" class="headerlink" title="Sed - Strings"></a>Sed - Strings</h2><h3 id="Substitute-Command-重要"><a href="#Substitute-Command-重要" class="headerlink" title="Substitute Command 重要"></a>Substitute Command 重要</h3><ul>
+<li>“find and replace”</li>
+<li>[address1[,address2]]s/pattern/replacement/[flags]</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用,分割每一行的内容的，改为用 | 分割. 但是这个操作只替换每行第一个逗号</span></span><br><span class="line"><span class="comment"># 操作完就进行下一行</span></span><br><span class="line">sed <span class="string">'s/,/ | /'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改为匹配所有的逗号并替换为|</span></span><br><span class="line">sed <span class="string">'s/,/ | /g'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只替换每一行中有匹配字符的</span></span><br><span class="line">sed <span class="string">'/The Pilgrimage/ s/,/ | /g'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只替换每一行中第二个逗号</span></span><br><span class="line">sed <span class="string">'s/,/ | /2'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># find, replace, print</span></span><br><span class="line"><span class="comment"># 只打印出被替换的行</span></span><br><span class="line">sed -n <span class="string">'s/Paulo Coelho/PAULO COELHO/p'</span> books.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 把被修改的行写入到另外一个文件</span></span><br><span class="line">sed -n <span class="string">'s/Paulo Coelho/PAULO COELHO/w junk.txt'</span> books.txt</span><br><span class="line">cat junk.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重要： 分隔符可以是 / | ! @ ^ 增加可读性</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把/bin/sed替换为/home/jerry/src/sed/sed-4.2.2/sed</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"/bin/sed"</span> | sed <span class="string">'s/\/bin\/sed/\/home\/jerry\/src\/sed\/sed-4.2.2\/sed/'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"/bin/sed"</span> | sed <span class="string">'s|/bin/sed|/home/jerry/src/sed/sed-4.2.2/sed|'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"/bin/sed"</span> | sed  <span class="string">'s!/bin/sed!/home/jerry/src/sed/sed-4.2.2/sed!'</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"/bin/sed"</span> | sed  <span class="string">'s@/bin/sed@/home/jerry/src/sed/sed-4.2.2/sed@'</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"/bin/sed"</span> | sed  <span class="string">'s^/bin/sed^/home/jerry/src/sed/sed-4.2.2/sed^'</span></span><br></pre></td></tr></table></figure>
+<h3 id="Creating-a-Substring"><a href="#Creating-a-Substring" class="headerlink" title="Creating a Substring"></a>Creating a Substring</h3><h3 id="String-Replacement-Flags-GNU-SED-only"><a href="#String-Replacement-Flags-GNU-SED-only" class="headerlink" title="String Replacement Flags (GNU SED only)"></a>String Replacement Flags (GNU SED only)</h3><h2 id="Sed-Managing-Patterns"><a href="#Sed-Managing-Patterns" class="headerlink" title="Sed - Managing Patterns"></a>Sed - Managing Patterns</h2><h2 id="Sed-Regular-Expressions"><a href="#Sed-Regular-Expressions" class="headerlink" title="Sed - Regular Expressions"></a>Sed - Regular Expressions</h2><h2 id="Sed-Useful-Recipes"><a href="#Sed-Useful-Recipes" class="headerlink" title="Sed - Useful Recipes"></a>Sed - Useful Recipes</h2><p>Sed Useful Resources<br>Sed - Quick Guide<br>Sed - Useful Resources<br>Sed - Discussion<br>Selected Reading<br>UPSC IAS Exams Notes<br>Developer’s Best Practices<br>Questions and Answers<br>Effective Resume Writing<br>HR Interview Questions<br>Computer Glossary<br>Who is Who<br>Stream Editor - Overview<br>Advertisements<br> Previous Page Next Page<br>The acronym SED stands for Stream EDitor. </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xiaoqiu.github.io/2019/01/27/hello-world/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xiaoqiu Huang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/土星.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -345,7 +603,19 @@
             
 
             
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-01-27T20:52:44+08:00">
+                2019-01-27
+              </time>
             
           </span>
 
@@ -462,6 +732,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/images/土星.jpg" alt="Xiaoqiu Huang">
+            
               <p class="site-author-name" itemprop="name">Xiaoqiu Huang</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -473,7 +745,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -483,10 +755,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
+                <a href="/categories/index.html">
                   <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -494,10 +766,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">10</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -520,6 +792,13 @@
 
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -567,11 +846,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
